@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Ryo Kids International Play School</title>
+  <meta name="description" content="Contact Ryo Kids International Play School for enrollments, fees, and schedules. Visit us at Thiruvottiyur, Chennai or call 8220001433.">
+  <meta name="keywords" content="contact Ryo Kids, playschool enrollment Chennai, daycare admission Thiruvottiyur, kids program enquiry">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="http://ryokidsplayschool.com/contact.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contact Us | Ryo Kids International Play School">
+  <meta property="og:description" content="Get in touch for enrollments, schedules, and fees. We're in Thiruvottiyur, Chennai.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://ryokidsplayschool.com/contact.html">
+  <meta property="og:image" content="http://ryokidsplayschool.com/images/playschool.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="index.css">
+
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="nav-logo" href="index.html">
+        <img src="images/logo.png" alt="RYO Kids Logo" class="nav-logo-img"><span class="logo-text"><span class="logo-line1">RYO Kids International</span><span class="logo-line2">Play School & Academy</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="programs.html">Programs</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="contact.html" class="nav-cta active">Contact Us</a></li>
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+  </header>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero" id="page-hero">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p>We'd love to hear from you! Reach out for enrollments, schedules, or any questions.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact-section">
+      <div class="container">
+        <div class="contact-layout">
+
+          <!-- Contact Form -->
+          <div>
+            <h2 style="margin-bottom: var(--space-xl);">Send Us a Message</h2>
+            <!-- Configure form action URL to your backend endpoint -->
+            <form id="contact-form" class="contact-form" action="#" method="POST" novalidate>
+
+              <div class="form-group">
+                <label for="name">Your Name <span style="color: var(--color-primary);">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name" autocomplete="name">
+                <span class="form-error-text">Please enter your name</span>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address <span style="color: var(--color-primary);">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
+                <span class="form-error-text">Please enter a valid email address</span>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" autocomplete="tel">
+              </div>
+
+              <div class="form-group">
+                <label for="program">Program of Interest</label>
+                <select id="program" name="program">
+                  <option value="">Select a program (optional)</option>
+                  <option value="playschool">Playschool & Daycare</option>
+                  <option value="tuition">Tuition (Grades 1–10)</option>
+                  <option value="drawing">Drawing</option>
+                  <option value="karate">Karate</option>
+                  <option value="dance">Dance</option>
+                  <option value="keyboard">Keyboard Music</option>
+                  <option value="handwriting">Handwriting</option>
+                  <option value="yoga">Yoga</option>
+                  <option value="tenth-grade">10th Grade Special Coaching</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Your Message <span style="color: var(--color-primary);">*</span></label>
+                <textarea id="message" name="message" rows="5" required placeholder="How can we help you? Tell us about your child and what you're looking for."></textarea>
+                <span class="form-error-text">Please enter your message</span>
+              </div>
+
+              <!-- Google reCAPTCHA — Replace YOUR_RECAPTCHA_SITE_KEY with your actual key -->
+              <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+
+              <button type="submit" class="btn-primary" id="submit-btn" style="width: 100%; justify-content: center;">Send Message →</button>
+
+              <!-- Success Message -->
+              <div id="form-success" class="form-message success" style="display: none;">
+                ✅ Thank you for reaching out! We'll get back to you within 24 hours.
+              </div>
+
+              <!-- Error Message -->
+              <div id="form-error" class="form-message error" style="display: none;">
+                ❌ Something went wrong. Please try again, or contact us directly at <a href="tel:8220001433">8220001433</a> or <a href="mailto:ryokidsplayschool@gmail.com">ryokidsplayschool@gmail.com</a>
+              </div>
+            </form>
+          </div>
+
+          <!-- Contact Info Sidebar -->
+          <div>
+            <div class="contact-info-card">
+              <h3>Contact Information</h3>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon">📞</div>
+                <div>
+                  <div class="contact-info-label">Phone</div>
+                  <a href="tel:8220001433">8220001433</a>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon">✉️</div>
+                <div>
+                  <div class="contact-info-label">Email</div>
+                  <a href="mailto:ryokidsplayschool@gmail.com">ryokidsplayschool@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon">📍</div>
+                <div>
+                  <div class="contact-info-label">Address</div>
+                  <span>Old No: 3b/2, New No:25, Seshachala Gramani St, Tolgate, Sathuma Nagar, Sathangadu, Thiruvottiyur, Chennai, Tamil Nadu 600019</span>
+                </div>
+              </div>
+
+              <div class="office-hours">
+                <h4>⏰ Office Hours</h4>
+                <div class="office-hours-item">
+                  <span>Playschool & Daycare</span>
+                  <strong>Mon–Sat, 9:00 AM – 5:00 PM</strong>
+                </div>
+                <div class="office-hours-item">
+                  <span>Tuition Classes</span>
+                  <strong>Mon–Sat, 6:00 PM – 8:30 PM</strong>
+                </div>
+                <div class="office-hours-item">
+                  <span>Extracurriculars</span>
+                  <strong>Contact us for schedule</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Google Map Section -->
+    <section class="section section-alt" id="map-section">
+      <div class="container">
+        <h2 class="section-title">Find Us</h2>
+        <p class="section-subtitle">Visit our campus in Thiruvottiyur, Chennai</p>
+
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.2!2d80.3!3d13.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSeshachala+Gramani+St%2C+Sathangadu%2C+Thiruvottiyur%2C+Chennai%2C+Tamil+Nadu+600019!5e0!3m2!1sen!2sin!4v1"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ryo Kids International Play School Location"
+          ></iframe>
+        </div>
+
+        <div class="text-center" style="margin-top: var(--space-xl);">
+          <a class="btn-secondary" href="https://www.google.com/maps/search/Old+No+3b+2+New+No+25+Seshachala+Gramani+St+Tolgate+Sathuma+Nagar+Sathangadu+Thiruvottiyur+Chennai+Tamil+Nadu+600019" target="_blank" rel="noopener noreferrer" id="map-directions-link">
+            📍 Get Directions on Google Maps
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="images/logo.png" alt="RYO Kids Logo">
+            <div class="footer-brand-text">
+              <span class="footer-line1">RYO Kids International</span>
+              <span class="footer-line2">Play School & Academy</span>
+            </div>
+          </div>
+          <p>Ryo Kids International Play School is a nurturing haven for children aged 1.5–15, offering playschool, daycare, tuition, and enrichment programs in Thiruvottiyur, Chennai.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="testimonials.html">Testimonials</a>
+            <a href="contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><span>📍</span><span>Old No: 3b/2, New No:25, Seshachala Gramani St, Tolgate, Sathuma Nagar, Sathangadu, Thiruvottiyur, Chennai, Tamil Nadu 600019</span></div>
+          <div class="footer-contact-item"><span>📞</span><a href="tel:8220001433">8220001433</a></div>
+          <div class="footer-contact-item"><span>✉</span><a href="mailto:ryokidsplayschool@gmail.com">ryokidsplayschool@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Ryo Kids International Play School. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

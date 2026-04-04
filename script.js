@@ -136,6 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (successMsg) successMsg.style.display = 'none';
       if (errorMsg) errorMsg.style.display = 'none';
 
+      // Hide reCAPTCHA error
+      const recaptchaError = document.getElementById('recaptcha-error');
+      if (recaptchaError) recaptchaError.style.display = 'none';
+
       let valid = true;
 
       if (!nameInput.value.trim()) {
@@ -153,11 +157,25 @@ document.addEventListener('DOMContentLoaded', () => {
         valid = false;
       }
 
+      // reCAPTCHA validation
+      if (typeof grecaptcha !== 'undefined') {
+        const recaptchaResponse = grecaptcha.getResponse();
+        if (!recaptchaResponse) {
+          if (recaptchaError) recaptchaError.style.display = 'block';
+          valid = false;
+        }
+      }
+
       if (valid) {
         // Form is valid — show success
         // Backend submission will be handled by the form action URL
         if (successMsg) successMsg.style.display = 'block';
         contactForm.reset();
+
+        // Reset reCAPTCHA after successful submission
+        if (typeof grecaptcha !== 'undefined') {
+          grecaptcha.reset();
+        }
 
         // Auto-hide success message after 5 seconds
         setTimeout(() => {

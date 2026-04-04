@@ -114,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const programInput = document.getElementById('program');
     const messageInput = document.getElementById('message');
     const successMsg = document.getElementById('form-success');
     const errorMsg = document.getElementById('form-error');
@@ -122,23 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
 
+    const validatePhone = (phone) => {
+      return /^[6-9]\d{9}$/.test(phone);
+    };
+
     const clearErrors = () => {
       contactForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
     };
 
     const showError = (input) => {
-      input.classList.add('error');
+      if (input) input.classList.add('error');
     };
 
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       clearErrors();
       if (successMsg) successMsg.style.display = 'none';
       if (errorMsg) errorMsg.style.display = 'none';
-
-      // Hide reCAPTCHA error
-      const recaptchaError = document.getElementById('recaptcha-error');
-      if (recaptchaError) recaptchaError.style.display = 'none';
 
       let valid = true;
 
@@ -152,40 +154,71 @@ document.addEventListener('DOMContentLoaded', () => {
         valid = false;
       }
 
+      if (phoneInput && (!phoneInput.value.trim() || !validatePhone(phoneInput.value.trim()))) {
+        showError(phoneInput);
+        valid = false;
+      }
+
+      if (programInput && !programInput.value.trim()) {
+        showError(programInput);
+        valid = false;
+      }
+
       if (!messageInput.value.trim()) {
         showError(messageInput);
         valid = false;
       }
 
-      // reCAPTCHA validation
-      if (typeof grecaptcha !== 'undefined') {
-        const recaptchaResponse = grecaptcha.getResponse();
-        if (!recaptchaResponse) {
-          if (recaptchaError) recaptchaError.style.display = 'block';
-          valid = false;
-        }
-      }
-
       if (valid) {
-        // Form is valid — show success
-        // Backend submission will be handled by the form action URL
-        if (successMsg) successMsg.style.display = 'block';
-        contactForm.reset();
+        const submitBtn = document.getElementById('submit-btn');
 
-        // Reset reCAPTCHA after successful submission
-        if (typeof grecaptcha !== 'undefined') {
-          grecaptcha.reset();
+        // Show loading state
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+
+        const payload = {
+          fullName: nameInput.value.trim(),
+          emailID: emailInput.value.trim(),
+          mobNum: phoneInput ? phoneInput.value.trim() : '',
+          programme: programInput ? programInput.value : '',
+          message: messageInput.value.trim()
+        };
+
+        try {
+          const response = await fetch(
+            'https://script.google.com/macros/s/AKfycbzykusYRPwCJQwnis2m__S3474Zb5Ro05kZJnHVlWJKDbXTX3Ku1g3c5Spl1Ox-7Jjz/exec',
+            {
+              method: 'POST',
+              mode: 'no-cors',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            }
+          );
+
+          // Google Apps Script with no-cors returns opaque response, treat as success
+          if (successMsg) successMsg.style.display = 'block';
+          contactForm.reset();
+
+          // Auto-hide success message after 5 seconds
+          setTimeout(() => {
+            if (successMsg) successMsg.style.display = 'none';
+          }, 5000);
+        } catch (error) {
+          // Show error message
+          if (errorMsg) errorMsg.style.display = 'block';
+        } finally {
+          // Restore button
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
         }
-
-        // Auto-hide success message after 5 seconds
-        setTimeout(() => {
-          if (successMsg) successMsg.style.display = 'none';
-        }, 5000);
       }
     });
 
     // Clear error on input
-    [nameInput, emailInput, messageInput].forEach(input => {
+    [nameInput, emailInput, phoneInput, programInput, messageInput].forEach(input => {
       if (input) {
         input.addEventListener('input', () => {
           input.classList.remove('error');

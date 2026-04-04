@@ -26,9 +26,6 @@
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="stylesheet" href="index.css">
 
-  <!-- Google reCAPTCHA -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -89,14 +86,15 @@
               </div>
 
               <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your phone number" autocomplete="tel">
+                <label for="phone">Phone Number <span style="color: var(--color-primary);">*</span></label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter 10-digit mobile number" autocomplete="tel" maxlength="10" pattern="[0-9]{10}" inputmode="numeric">
+                <span class="form-error-text">Please enter a valid 10-digit mobile number</span>
               </div>
 
               <div class="form-group">
-                <label for="program">Program of Interest</label>
-                <select id="program" name="program">
-                  <option value="">Select a program (optional)</option>
+                <label for="program">Program of Interest <span style="color: var(--color-primary);">*</span></label>
+                <select id="program" name="program" required>
+                  <option value="">Select a program</option>
                   <option value="playschool">Playschool & Daycare</option>
                   <option value="tuition">Tuition (Grades 1–10)</option>
                   <option value="drawing">Drawing</option>
@@ -107,6 +105,7 @@
                   <option value="yoga">Yoga</option>
                   <option value="tenth-grade">10th Grade Special Coaching</option>
                 </select>
+                <span class="form-error-text">Please select a program</span>
               </div>
 
               <div class="form-group">
@@ -114,10 +113,6 @@
                 <textarea id="message" name="message" rows="5" required placeholder="How can we help you? Tell us about your child and what you're looking for."></textarea>
                 <span class="form-error-text">Please enter your message</span>
               </div>
-
-              <!-- Google reCAPTCHA -->
-              <div class="g-recaptcha" data-sitekey="6LfJ96YsAAAAAHjkoC3gUjPMFDgYazRe-BqW299d" id="recaptcha-widget"></div>
-              <span class="form-error-text" id="recaptcha-error">Please complete the reCAPTCHA</span>
 
               <button type="submit" class="btn-primary" id="submit-btn" style="width: 100%; justify-content: center;">Send Message →</button>
 

@@ -891,25 +891,6 @@ ul, ol {
   border: 1px solid #e74c3c;
 }
 
-/* reCAPTCHA widget */
-.g-recaptcha {
-  margin-bottom: var(--space-sm);
-}
-
-#recaptcha-error {
-  display: none;
-  font-size: var(--fs-xs);
-  color: #e74c3c;
-  margin-bottom: var(--space-md);
-}
-
-@media (max-width: 400px) {
-  .g-recaptcha {
-    transform: scale(0.85);
-    transform-origin: 0 0;
-  }
-}
-
 /* Contact Info Sidebar */
 .contact-info-card {
   background: var(--color-light);
